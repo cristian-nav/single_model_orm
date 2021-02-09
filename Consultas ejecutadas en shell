@@ -1,0 +1,55 @@
+python manage.py shell
+from user_app.models import *
+*****************************************************************************************************************
+Consulta: Crear 3 nuevos usuarios
+user = Users(first_name="user 1",last_name="user 1",email_adress="user1@gamil.com",age=1)
+user.save()
+user2 = Users(first_name="user 2",last_name="user 2",email_adress="user2@gamil.com",age=10)
+user2.save()
+user3 = Users(first_name="user 3",last_name="user 3",email_adress="user3@gamil.com",age=100)
+user3.save()
+
+*****************************************************************************************************************
+Consulta: recuperar todos los usuarios
+Users.objects.all()
+resultado
+<QuerySet [<Users: Users object (1)>, <Users: Users object (2)>, <Users: Users object (3)>]>
+
+
+*****************************************************************************************************************
+Consulta: recuperar el último usuario
+Users.objects.last()
+resultado
+<Users: Users object (3)>
+
+*****************************************************************************************************************
+Consulta: recuperar el primer usuario
+Users.objects.first()
+resultado
+<Users: Users object (1)>
+
+*****************************************************************************************************************
+Consulta: Cambie el usuario con id = 3 para que su apellido sea Pancakes.
+pancakes = Users.objects.get(id=3)
+pancakes.last_name = "Pancakes"
+pancakes.save()
+
+*******************************************************************************************
+Consulta: Eliminar el usuario con id = 2 de la base de datos
+c = Users.objects.get(id=2)
+c.delete()
+resultado
+(1, {'user_app.Users': 1})
+
+*******************************************************************************************
+Consulta: Obtenga todos los usuarios, ordenados por su nombre
+Users.objects.all().order_by("first_name")
+resultado
+<QuerySet [<Users: Users object (1)>, <Users: Users object (3)>]>
+
+*******************************************************************************************
+BONUS Query: obtén todos los usuarios, ordenados por su nombre en orden descendente
+Users.objects.all().order_by("-first_name")
+resultado
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+
