@@ -15,7 +15,6 @@ Users.objects.all()
 resultado
 <QuerySet [<Users: Users object (1)>, <Users: Users object (2)>, <Users: Users object (3)>]>
 
-
 *****************************************************************************************************************
 Consulta: recuperar el último usuario
 Users.objects.last()
